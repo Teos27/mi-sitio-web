@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hardware y Software – Animaciones Suaves</title>
+  <style>
+    :root {
+      --bg: #f4f4f4;
+      --card: #fff;
+      --text: #222;
+      --muted: #666;
+      --radius: 14px;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      font-family: system-ui, sans-serif;
+      color: var(--text);
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .card {
+      background: var(--card);
+      padding: 22px;
+      border-radius: var(--radius);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      margin: 25px 0;
+    }
+    .hero-img {
+      width: 100%;
+      border-radius: var(--radius);
+      margin-top: 12px;
+    }
+    .caption {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .mini {
+      background: #fafafa;
+      padding: 16px;
+      border-radius: var(--radius);
+      border: 1px solid #e5e5e5;
+    }
+    .muted {
+      color: var(--muted);
+    }
+    /* Animaciones suaves */
+    .fade {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <section class="card fade">
+    <h1>Hardware y Software</h1>
+    <img class="hero-img" src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f?q=80&w=1200&auto=format&fit=crop" alt="Hardware y software">
+    <div class="caption">Imagen: ilustración de componentes electrónicos y software.</div>
+  </section>
+
+  <section id="importancia" class="card fade">
+    <h2>¿Por qué es importante entender ambos?</h2>
+    <p class="muted">Separar hardware y software es útil para el análisis, pero en la práctica ambos se necesitan.</p>
+
+    <div class="grid">
+      <div class="mini fade">
+        <h3>IoT y sensores</h3>
+        <p>Los sensores (hardware) recogen datos; el software procesa y actúa.</p>
+      </div>
+      <div class="mini fade">
+        <h3>Videojuegos</h3>
+        <p>CPU/GPU dan potencia; el software exprime el rendimiento.</p>
+      </div>
+      <div class="mini fade">
+        <h3>Actualizaciones OTA</h3>
+        <p>Permiten corregir errores sin tocar el hardware.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="donde" class="card fade">
+    <h2>Publicar y compartir</h2>
+    <p class="muted">Guarda esta página como <code>index.html</code> y súbela donde quieras.</p>
+
+    <h3>Opciones rápidas</h3>
+    <ul class="muted">
+      <li><strong>Netlify:</strong> arrastra tu HTML al Dropzone.</li>
+      <li><strong>GitHub Pages:</strong> sube el archivo y activa Pages.</li>
+      <li><strong>Replit / CodePen:</strong> pega el código y comparte.</li>
+    </ul>
+  </section>
+
+  <footer class="fade">
+    © 2025 — Animaciones suaves listas para visualización directa
+  </footer>
+
+</div>
+
+<script>
+  // Animación suave al aparecer en pantalla
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll(".fade").forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
